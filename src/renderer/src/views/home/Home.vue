@@ -46,7 +46,6 @@ import Count from '../../components/Count.vue'
 import Detail from '../../components/count/Detail.vue'
 import { initTime } from '../../util/common'
 import { ref, onMounted } from 'vue'
-import { imgUrl, adsUrl, publicité } from '../../util/req'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 let dict = ref({})
@@ -70,7 +69,6 @@ onMounted(() => {
     countLearnByDictId.value = data.learnCount
     countReview.value = data.reviewCount
   })
-  publicité()
 })
 
 function route(path) {

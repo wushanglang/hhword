@@ -1,7 +1,6 @@
-import axios from 'axios';
-import { ref } from 'vue'
+import axios from 'axios'; 
 const req = axios.create({
-  baseURL: 'http://hhdict.fun:54321/api',
+  baseURL: 'http://localhost:8080/api',
   timeout: 5000,
   headers: {
     'Content-Type': 'application/json',
@@ -26,14 +25,4 @@ req.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-export  let imgUrl = ref(null)
-export let adsUrl = ref(null)
-export function publicité() {
-  req.get('/hh/oui/publicité/read').then((data) => {
-    if (data.length) {
-      imgUrl.value = data[0]
-      adsUrl.value = data[1]
-    }
-  })
-} 
+ 
