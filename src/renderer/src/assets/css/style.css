@@ -1,0 +1,184 @@
+* {
+  margin: 0;
+  padding: 0;
+
+}
+
+body {
+  line-height: 1.5;
+  font-family: 'Noto Sans SC', Helvetica, Arial, sans-serif;
+}
+
+p {
+  margin: 0px;
+}
+
+ul {
+  padding-inline-start: 20px;
+  margin: 0;
+}
+
+li {
+  margin: 0;
+}
+
+button {
+  font-size: 1rem;
+  padding: 8px 16px;
+}
+
+.iconfont {
+  cursor: pointer;
+}
+
+/*
+ * tooltip
+ */
+.tooltip {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  color: #fff;
+  background-color: hsla(222, 21%, 12%, 0.9);
+  visibility: hidden;
+  text-align: center;
+  border-radius: 6px;
+  padding: 1rem;
+  position: absolute;
+  z-index: 999;
+  transform: translate(-40%, -150%);
+  font-size: 1.8rem;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+/* status button */
+.status {
+  margin-top: auto;
+  display: flex;
+  margin-left: 3rem;
+  gap: 1.5rem;
+  user-select: none;
+}
+
+.swap {
+  cursor: pointer !important;
+}
+
+.swap>span {
+  font-size: 1.2rem;
+}
+
+.positive {
+  color: var(--pico-primary-background);
+}
+
+.active {
+  color: var(--pico-primary-background);
+  text-decoration: underline;
+}
+
+/* vue-virtual-scroller */
+.wrapper,
+.scroller {
+  width: 100%;
+  padding-left: 4px;
+}
+
+.wrapper {
+  margin: 10px;
+}
+
+.item {
+  font-size: 20px;
+  max-width: 345px;
+  cursor: pointer;
+  text-align: center;
+  padding: 5px 0;
+  transition: 200ms;
+}
+
+.item:hover {
+  box-shadow: 0 0 0 1px inset;
+  border-radius: 2px;
+  color: var(--pico-primary-hover-background);
+}
+
+.complete {
+  color: var(--pico-h6-color);
+  text-decoration: line-through
+}
+
+.border {
+  box-shadow: 0 0 0 1px inset;
+  border-radius: 2px;
+}
+
+/* system scroller */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #c8cdd8;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #666;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #190928;
+}
+
+/* word info */
+.name {
+  margin-left: 8px;
+  font-size: 50px;
+}
+
+.info>div {
+  font-size: 20px;
+  box-shadow: 0 0 0 1px;
+  padding: 8px;
+  margin: 8px 0px 0px 8px;
+  border-radius: 2px;
+}
+
+/* total nav */
+.total-footer {
+  display: flex;
+  gap: 19rem;
+}
+
+.nav {
+  font-size: 20px;
+  margin-top: 8px;
+}
+
+.nav>div {
+  cursor: pointer;
+  padding: 0 1em;
+}
+
+.nav>div:hover {
+  border-bottom: 3px solid;
+}
+
+.nav>.active {
+  cursor: default;
+  text-decoration: none;
+  border-bottom: 3px solid;
+}
