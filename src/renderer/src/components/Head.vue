@@ -2,14 +2,14 @@
   <div class="con">
     <div class="left">
       <div>
-        <span class="iconfont" @click="router.push('/')">&#xe644;</span>
+        <div class="iconfont" @click="router.push('/')">&#xe644;</div>
       </div>
       <div @click="router.push('/dictList')">
-        <span class="iconfont">&#xe601;</span>
+        <div class="iconfont">&#xe601;</div>
       </div>
       <div @click="toggleTheme()">
-        <span v-if="currentTheme === 'dark'" class="iconfont">&#xe624;</span>
-        <span v-else class="iconfont">&#xe67c;</span>
+        <div v-if="currentTheme === 'dark'" class="iconfont">&#xe624;</div>
+        <div v-else class="iconfont">&#xe67c;</div>
       </div>
     </div>
 
@@ -17,10 +17,10 @@
 
     <div class="right">
       <div>
-        <span class="iconfont" @click="minimize">&#xe63b;</span>
+        <div class="iconfont" @click="minimize">&#xe63b;</div>
       </div>
       <div>
-        <span class="iconfont close" @click="close">&#xe600;</span>
+        <div class="iconfont close" @click="close">&#xe600;</div>
       </div>
     </div>
   </div>
@@ -55,7 +55,7 @@ function close() {
 .con {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; 
   -webkit-app-region: drag;
   user-select: none;
   background: var(--pico-code-background-color);
@@ -67,7 +67,7 @@ function close() {
 }
 .iconfont {
   font-size: 20px;
-  padding: 5px 10px;
+  padding: 0 10px;
   cursor: pointer;
   transition: 150ms;
 }
