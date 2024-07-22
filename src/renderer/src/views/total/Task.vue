@@ -208,6 +208,7 @@ function check(i) {
   return !wordList.value[i].likeTag
 }
 function storeIndex() {
+  if (wordList.value.length === 0) return
   let cnt = 0
   for (let i = wordIndex.value; i >= 0; i--) if (check(i)) cnt++
 

@@ -86,12 +86,11 @@ function switchCompleteEvent() {
 const handleCtrlKey = (event) => {
   if (event.altKey) {
     switch (event.key) {
-      case 'l':
-        console.log(123)
+      case 'l': 
         switchLike(cur.value)
         break
       case 'f':
-        switchComplete(cur.value)
+        switchCompleteEvent()
         break
     }
   } else if (event.key === 's') speech(cur.value.word)

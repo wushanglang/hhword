@@ -1,12 +1,8 @@
 <template>
   <div class="con">
     <div class="left">
-      <div>
-        <div class="iconfont" @click="router.push('/')">&#xe644;</div>
-      </div>
-      <div @click="router.push('/dictList')">
-        <div class="iconfont">&#xe601;</div>
-      </div>
+      <div class="iconfont" @click="router.push('/')">&#xe644;</div>
+      <div @click="router.push('/dictList')" class="iconfont">&#xe601;</div>
       <div @click="toggleTheme()">
         <div v-if="currentTheme === 'dark'" class="iconfont">&#xe624;</div>
         <div v-else class="iconfont">&#xe67c;</div>
@@ -15,13 +11,9 @@
 
     <div>欢欢单词</div>
 
-    <div class="right">
-      <div>
-        <div class="iconfont" @click="minimize">&#xe63b;</div>
-      </div>
-      <div>
-        <div class="iconfont close" @click="close">&#xe600;</div>
-      </div>
+    <div class="right"> 
+      <div class="iconfont" @click="minimize">&#xe63b;</div>
+      <div class="iconfont close" @click="close">&#xe600;</div>
     </div>
   </div>
 </template>
@@ -55,7 +47,7 @@ function close() {
 .con {
   width: 100%;
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   -webkit-app-region: drag;
   user-select: none;
   background: var(--pico-code-background-color);

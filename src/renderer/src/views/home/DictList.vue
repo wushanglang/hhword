@@ -66,7 +66,7 @@
 
     <dialog id="upload" @click="hideModal()">
       <article @click="$event.stopPropagation()" style="padding: 2rem 0; border-radius: 8px">
-        <h6 style="text-align: center">由于涉及潜在的版权问题，请自行下载词典录入</h6>
+        <h6 style="text-align: center">由于涉及潜在的版权问题，请自行<a class="download" href="https://pan.quark.cn/s/2cd52df70709" target="_blank">下载词典</a>录入</h6>
         <div
           id="drop"
           @dragover.prevent
@@ -331,5 +331,13 @@ li {
 }
 #fileInput {
   display: none;
+}
+.download {
+  color: #1e1eff;
+  text-decoration-color: #1e1eff;
+}
+.download:hover {
+  color: #0000ff;
+  text-decoration-color: #0000ff;
 }
 </style>
