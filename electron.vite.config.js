@@ -1,14 +1,13 @@
 import { resolve } from 'path'
-import { defineConfig, bytecodePlugin, externalizeDepsPlugin } from 'electron-vite'
+import { defineConfig, externalizeDepsPlugin } from 'electron-vite'
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   main: {
-    plugins: [externalizeDepsPlugin(), bytecodePlugin({ removeBundleJS: false })]
+    plugins: [externalizeDepsPlugin()]
   },
   preload: {
-    // plugins: [externalizeDepsPlugin()]
-    plugins: [externalizeDepsPlugin(), bytecodePlugin({ chunkAlias: ['index'] })],
+    plugins: [externalizeDepsPlugin()]
   },
   renderer: {
     resolve: {

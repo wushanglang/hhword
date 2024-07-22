@@ -8,8 +8,8 @@
   "scripts": {
     "start": "electron-forge start",
     "dev": "electron-vite dev --outDir=dist",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
+    "package": "electron-vite build --outDir=dist && electron-forge package",
+    "make": "electron-vite build --outDir=dist && electron-forge make",
     "format": "prettier --write .",
     "build": "electron-vite build"
   },
