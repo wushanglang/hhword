@@ -441,8 +441,9 @@ details summary[role=button]:not(.outline)::after {
 }
 
 [data-theme=dark] {
-  --pico-background-color: #13171f;
-  --pico-color: #c2c7d0;
+  --pico-background-color: #18181b;
+  --pico-card-background-color: #1e1e22;
+  --pico-color: #f0f0f0;
   --pico-text-selection-color: rgba(130, 171, 0, 0.1875);
   --pico-muted-color: #7b8495;
   --pico-muted-border-color: #202632;
@@ -477,12 +478,12 @@ details summary[role=button]:not(.outline)::after {
   --pico-contrast-focus: rgba(207, 213, 226, 0.25);
   --pico-contrast-inverse: #000;
   --pico-box-shadow: 0.0145rem 0.029rem 0.174rem rgba(7, 9, 12, 0.01698), 0.0335rem 0.067rem 0.402rem rgba(7, 9, 12, 0.024), 0.0625rem 0.125rem 0.75rem rgba(7, 9, 12, 0.03), 0.1125rem 0.225rem 1.35rem rgba(7, 9, 12, 0.036), 0.2085rem 0.417rem 2.502rem rgba(7, 9, 12, 0.04302), 0.5rem 1rem 6rem rgba(7, 9, 12, 0.06), 0 0 0 0.0625rem rgba(7, 9, 12, 0.015);
-  --pico-h1-color: #f0f1f3;
-  --pico-h2-color: #e0e3e7;
-  --pico-h3-color: #c2c7d0;
-  --pico-h4-color: #b3b9c5;
-  --pico-h5-color: #a4acba;
-  --pico-h6-color: #8891a4;
+  --pico-h1-color: #E0E0E0;
+  --pico-h2-color: #E0E0E0;
+  --pico-h3-color: #E0E0E0;
+  --pico-h4-color: #B0B0B0;
+  --pico-h5-color: #B0B0B0;
+  --pico-h6-color: #B0B0B0;
   --pico-mark-background-color: #014063;
   --pico-mark-color: #fff;
   --pico-ins-color: #62af9a;
@@ -493,7 +494,7 @@ details summary[role=button]:not(.outline)::after {
   --pico-button-hover-box-shadow: 0 0 0 rgba(0, 0, 0, 0);
   --pico-table-border-color: var(--pico-muted-border-color);
   --pico-table-row-stripped-background-color: rgba(111, 120, 135, 0.0375);
-  --pico-code-background-color: #1a1f28;
+  --pico-code-background-color: #1e1e22;
   --pico-code-color: #8891a4;
   --pico-code-kbd-background-color: var(--pico-color);
   --pico-code-kbd-color: var(--pico-background-color);
@@ -525,7 +526,6 @@ details summary[role=button]:not(.outline)::after {
   --pico-accordion-active-summary-color: var(--pico-primary-hover);
   --pico-accordion-close-summary-color: var(--pico-color);
   --pico-accordion-open-summary-color: var(--pico-muted-color);
-  --pico-card-background-color: #181c25;
   --pico-card-border-color: var(--pico-card-background-color);
   --pico-card-box-shadow: var(--pico-box-shadow);
   --pico-card-sectioning-background-color: #1a1f28;
@@ -2647,7 +2647,7 @@ progress::-moz-progress-bar {
   position: relative
 }
 
-[data-tooltip]:not(a, button, input) { 
+[data-tooltip]:not(a, button, input) {
   text-decoration: none;
   cursor: help
 }

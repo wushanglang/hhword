@@ -333,11 +333,11 @@ li {
   display: none;
 }
 .download {
-  color: #1e1eff;
-  text-decoration-color: #1e1eff;
+  color: #6988e6;
+  text-decoration-color:#6988e6;
 }
 .download:hover {
-  color: #0000ff;
-  text-decoration-color: #0000ff;
+  color: #496dda;
+  text-decoration-color: #496dda;
 }
 </style>
