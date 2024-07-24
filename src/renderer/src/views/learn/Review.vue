@@ -134,11 +134,12 @@ const handleCtrlKey = (key) => {
         speech(cur.value.word)
     }
 }
-
+let typeIds = localStorage.getItem('typeIds') || '-1,'
 const handleComplete = () => {
   playClick()
   window.count.increTypeCount()
   if (seeTag.value) {
+    localStorage.setItem('typeIds', typeIds + ',' + cur.value.id)
     wordIndex.value++
   }
   seeTag.value = !seeTag.value

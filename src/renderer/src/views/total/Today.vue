@@ -71,28 +71,22 @@
       </div>
       <div class="nav" style="display: flex">
         <div
-          :class="currentList === 'TaskList' ? 'active' : ''"
-          @click="switchComponent('TaskList')"
+          :class="currentList === 'TLearnList' ? 'active' : ''"
+          @click="switchComponent('TLearnList')"
         >
-          待学
+          Learn
         </div>
         <div
-          :class="currentList === 'TotalList' ? 'active' : ''"
-          @click="switchComponent('TotalList')"
+          :class="currentList === 'TReviewList' ? 'active' : ''"
+          @click="switchComponent('TReviewList')"
         >
-          全部
+          Review
         </div>
         <div
-          :class="currentList === 'LikeList' ? 'active' : ''"
-          @click="switchComponent('LikeList')"
+          :class="currentList === 'TodayList' ? 'active' : ''"
+          @click="switchComponent('TodayList')"
         >
-          收藏
-        </div>
-        <div
-          :class="currentList === 'CompleteList' ? 'active' : ''"
-          @click="switchComponent('CompleteList')"
-        >
-          完成
+          Type
         </div>
       </div>
     </div>
@@ -100,16 +94,14 @@
 </template>
 
 <script>
-import TaskList from '../../components/list/TaskList.vue'
-import CompleteList from '../../components/list/CompleteList.vue'
-import LikeList from '../../components/list/LikeList.vue'
-import TotalList from '../../components/list/TotalList.vue'
+import TLearnList from '../../components/list/TLearnList.vue'
+import TReviewList from '../../components/list/TReviewList.vue'
+import TodayList from '../../components/list/TodayList.vue'
 export default {
   components: {
-    TaskList,
-    TotalList,
-    CompleteList,
-    LikeList
+    TodayList,
+    TReviewList,
+    TLearnList
   }
 }
 </script>
@@ -119,13 +111,11 @@ import { playStatus, playClick, speech } from '../../util/sound'
 import { cur, wordIndex, chars, charIndex, highlightWords, wordList } from '../../util/wordUtil'
 import { dayTimeInterval, clearTimeInterval } from '../../util/common'
 import { ref, onMounted, onUnmounted } from 'vue'
-// import { useRouter } from 'vue-router'
-// const router = useRouter()
 
 // 默写模式
 let seeTag = ref(false || localStorage.getItem('seeTag') == 'true')
 // 动态词表
-let currentList = ref('TaskList')
+let currentList = ref('TodayList')
 
 function switchSeeTag() {
   seeTag.value = !seeTag.value
@@ -169,7 +159,6 @@ const handleKeyup = (event) => {
     return
   } else if (charIndex.value === chars.value.length) {
     // Word Complete
-    localStorage.setItem('typeIds', (localStorage.getItem('typeIds') || '-1') + ',' + cur.value.id)
     wordIndex.value++
     window.count.increTypeCount()
   }
@@ -196,26 +185,12 @@ const handleKeyup = (event) => {
   }
 }
 
+// update list instead of dymanic component? there are some bug on vue-virtual-scroller when change list,
 function switchComponent(listName) {
   if (listName === currentList.value) return
-  storeIndex()
   currentList.value = listName
 }
 
-function check(i) {
-  if (currentList.value === 'TotalList') return false
-  if (currentList.value === 'TaskList') return wordList.value[i].completeTag
-  if (currentList.value === 'CompleteList') return !wordList.value[i].completeTag
-  return !wordList.value[i].likeTag
-}
-function storeIndex() {
-  if (wordList.value.length === 0) return
-  let cnt = 0
-  for (let i = wordIndex.value; i >= 0; i--) if (check(i)) cnt++
-
-  let finalIndex = wordIndex.value - cnt < 0 ? 0 : wordIndex.value - cnt
-  localStorage.setItem(currentList.value, finalIndex)
-}
 onMounted(() => {
   window.addEventListener('keyup', handleKeyup)
   dayTimeInterval()
@@ -223,7 +198,6 @@ onMounted(() => {
 onUnmounted(() => {
   clearTimeInterval()
   window.removeEventListener('keyup', handleKeyup)
-  storeIndex()
 })
 </script>
 

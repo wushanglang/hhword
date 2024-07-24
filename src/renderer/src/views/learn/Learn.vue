@@ -86,7 +86,7 @@ function switchCompleteEvent() {
 const handleCtrlKey = (event) => {
   if (event.altKey) {
     switch (event.key) {
-      case 'l': 
+      case 'l':
         switchLike(cur.value)
         break
       case 'f':
@@ -99,12 +99,14 @@ const handleCtrlKey = (event) => {
 const handleComlete = () => {
   playClick()
   window.count.increTypeCount()
-  if (seeTag.value) wordIndex.value++
+  if (seeTag.value) {
+    localStorage.setItem('typeIds', (localStorage.getItem('typeIds') || '-1') + ',' + cur.value.id)
+    wordIndex.value++
+  }
   seeTag.value = !seeTag.value
   charIndex.value = 0
   speech(cur.value.word)
 }
-
 const handleKeyup = (event) => {
   if (event.ctrlKey) {
     // FAST KEY

@@ -68,6 +68,7 @@ onMounted(() => {
     map.value = {}
     for (let i = 0; i < data.length; i++) {
       map.value[data[i].dayTimestamp] = data[i].cnt
+      totalCount.value += data[i].cnt
     }
     const yearTimestamp = 365 * 24 * 3600000
     const currentTimestamp = new Date().setHours(0, 0, 0, 0)
@@ -78,17 +79,11 @@ onMounted(() => {
     for (let time = lastYearTimestamp; time <= currentTimestamp; time += 3600 * 24 * 1000) {
       let cnt = map.value[time] ? map.value[time] : 0
       list.value.push([time, cnt])
+      if (time === currentTimestamp) todayCount.value = cnt
     }
     map.value = null
 
     calculateMonths()
-  })
-
-  window.count.getTodayCount().then((data) => {
-    todayCount.value = data.cnt || data
-  })
-  window.count.getTotalCount().then((data) => {
-    totalCount.value = data
   })
 })
 

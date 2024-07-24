@@ -5,7 +5,7 @@ import Task from '../views/total/Task.vue'
 import Finish from '../views/learn/Finish.vue'
 import Learn from '../views/learn/Learn.vue'
 import Review from '../views/learn/Review.vue'
-
+import Today from '../views/total/Today.vue';
 const routes = [
   {
     path: '/',
@@ -37,6 +37,11 @@ const routes = [
     name: 'Finish',
     component: Finish
   },
+  {
+    path: '/today',
+    name: Today,
+    component: Today
+  }
 ];
 
 const router = createRouter({

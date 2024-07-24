@@ -13,15 +13,18 @@
 
         <div class="button">
           <div role="button" class="outline contrast" @click="route('learn')">
-            <strong>learn</strong>
+            <strong>Learn</strong>
             <div style="text-align: center">{{ countLearnByDictId }}</div>
           </div>
           <div role="button" class="outline contrast" @click="route('review')">
-            <strong>review</strong>
+            <strong>Review</strong>
             <div style="text-align: center">{{ countReview }}</div>
           </div>
           <div role="button" class="outline contrast" @click="route('task')">
-            <strong>total</strong>
+            <strong>Total</strong>
+          </div>
+          <div role="button" class="outline contrast" @click="route('today')">
+            <strong>Today</strong>
           </div>
         </div>
       </div>
@@ -42,7 +45,7 @@
 </template>
 
 <script setup>
-import Count from '../../components/Count.vue'
+import Count from '../../components/count/Count.vue'
 import Detail from '../../components/count/Detail.vue'
 import { initTime } from '../../util/common'
 import { ref, onMounted } from 'vue'
@@ -96,7 +99,7 @@ function route(path) {
 .dict {
   border-radius: 0.4rem;
   display: flex;
-  width: 28rem;
+  width: 30rem;
 }
 
 progress {
@@ -127,7 +130,7 @@ progress {
   border: none;
   margin: 0;
   width: 6rem;
-  padding: 4px 0;
+  padding: 8px 0;
   margin-bottom: 0.2rem;
   transition: box-shadow 150ms;
 }

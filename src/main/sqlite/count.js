@@ -16,7 +16,7 @@ export function increTypeCount() {
   transaction()
 }
 
-// 获取今天的计数
+// 获取当天计数
 export function getTodayCount() {
   const today = new Date().setHours(0, 0, 0, 0);
   const sql = `SELECT cnt FROM count_type WHERE dayTimestamp = ?`;

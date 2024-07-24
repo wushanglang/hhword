@@ -77,7 +77,6 @@ import {
   switchLike,
   switchComplete
 } from '../../util/wordUtil'
-import { scrollToItem, scroller } from '../../util/common'
 import { speech } from '../../util/sound'
 import { useRouter } from 'vue-router'
 const router = useRouter()
@@ -104,13 +103,20 @@ const initData = async () => {
 
 function submit() {
   let ids = wordList.value.map((word) => word.id).join(',')
+  let tmpIds = wordList.value
+    .filter((word) => word.completeTag === 0)
+    .map((word) => word.id)
+    .join(',')
+
   if (nameIndex === 'reviewIndex') {
+    localStorage.setItem('reviewIds', (localStorage.getItem('reviewIds') || '-1') + ',' + tmpIds)
     let keepList = wordList.value.filter((word) => word.keepTag === true).map((word) => word.id)
     router.push({
       path: '/finish',
       query: { ids: ids, keepList: JSON.stringify(keepList), path: 'review' }
     })
   } else if (nameIndex === 'learnIndex') {
+    localStorage.setItem('learnIds', (localStorage.getItem('learnIds') || '-1') + ',' + tmpIds)
     router.push({ path: '/finish', query: { ids: ids, path: 'learn' } })
   }
 }

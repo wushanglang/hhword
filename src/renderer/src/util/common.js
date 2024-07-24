@@ -17,6 +17,9 @@ export function initTime() {
     localStorage.setItem('todayLearn', 0)
     localStorage.setItem('todayReview', 0)
     localStorage.setItem('timestamp', curTimestamp);
+    localStorage.setItem('typeIds', '-1')
+    localStorage.setItem('learnIds', '-1')
+    localStorage.setItem('reviewIds', '-1')
   }
 }
 
