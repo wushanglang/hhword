@@ -1,13 +1,15 @@
 欢欢单词是一款简单且高效的桌面端单词记忆软件，基于[A4纸背单词法](https://www.bilibili.com/video/BV1g7411T7Py/?spm_id_from=333.337.search-card.all.click&vd_source=a5c0ba66169226847090e8f0a2c8d976)构建。 
 <br>  
 
+<br>  
 
 ### 演示
 
 https://www.bilibili.com/video/BV1xBeBecEu2/?spm_id_from=333.999.0.0
 ![image](https://github.com/user-attachments/assets/f80ad732-c4b7-4660-9422-fd7bc5f1122b)
 ![image](https://github.com/user-attachments/assets/2f7fca70-9bfa-403c-be14-4ec56376fe9a)
-<br>
+
+<br>  <br>
 
 ### 功能介绍
 
@@ -21,7 +23,7 @@ https://www.bilibili.com/video/BV1xBeBecEu2/?spm_id_from=333.999.0.0
   - 当天练习列表：每一次完整的单词拼写的单词都将记入该列表，0时刷新
 - 词典导入：将符合相应数据格式的excel文件导入为词典
 <br>
-
+<br>  
 
 ### 构建该软件的目的
 
@@ -29,12 +31,14 @@ https://www.bilibili.com/video/BV1xBeBecEu2/?spm_id_from=333.999.0.0
 
 
 <br>
+<br>  
 
 ### 系统安装
 
 Windows 10系统可正常运行。项目基于electron构建，通过zip包解压安装，理论上支持Linux，MacOS.
 
 <br>
+<br>  
 
 ### 数据来源
 
