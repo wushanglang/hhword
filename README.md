@@ -29,6 +29,11 @@ https://www.bilibili.com/video/BV1xBeBecEu2/?spm_id_from=333.999.0.0
 
 目前并没有一款完善的电脑端单词软件，作为重度的电脑使用者对单词需求驱使我构建该软件。在欢欢单词的设计中参考A4纸单词记忆法，提供`拼写`&`遗忘曲线`&`回顾列表`来进行单词的记忆，同时也提供`总列表` & `type list` & `收藏完成状态`来进行单词的快速扫盲。
 
+<br>        
+<br>
+### 下载
+软件下载：https://pan.quark.cn/s/195e1b425880<br>
+词典下载：https://pan.quark.cn/s/2cd52df70709
 
 <br>
 <br>  
