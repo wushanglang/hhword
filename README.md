@@ -6,8 +6,10 @@
 ### 演示
 
 https://www.bilibili.com/video/BV1xBeBecEu2/?spm_id_from=333.999.0.0
-![image](https://github.com/user-attachments/assets/f80ad732-c4b7-4660-9422-fd7bc5f1122b)
-![image](https://github.com/user-attachments/assets/2f7fca70-9bfa-403c-be14-4ec56376fe9a)
+<img src="https://github.com/user-attachments/assets/7a373fcb-e4d6-4d60-a377-d363d785122a" width="700">
+<img src="https://github.com/user-attachments/assets/b99d53a1-ecfa-41c4-a574-6fe7be40b094" width="700">
+<img src="https://github.com/user-attachments/assets/e39aef0f-d2d0-4f28-9b27-51033a07ee71" width="700">
+
 
 <br>  <br>
 
