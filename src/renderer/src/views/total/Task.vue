@@ -119,8 +119,6 @@ import { playStatus, playClick, speech } from '../../util/sound'
 import { cur, wordIndex, chars, charIndex, highlightWords, wordList } from '../../util/wordUtil'
 import { dayTimeInterval, clearTimeInterval } from '../../util/common'
 import { ref, onMounted, onUnmounted } from 'vue'
-// import { useRouter } from 'vue-router'
-// const router = useRouter()
 
 // 默写模式
 let seeTag = ref(false || localStorage.getItem('seeTag') == 'true')
@@ -142,6 +140,11 @@ function switchComplete() {
   window.word.switchComplete(cur.value.id)
   if (cur.value.completeTag) wordIndex.value++
 }
+
+// 避免空格下拉
+document.addEventListener('keydown', function (event) {
+  if (event.key === ' ') event.preventDefault()
+})
 
 // 键盘监听： 快捷键, eq, complete, fail
 const handleKeyup = (event) => {
@@ -172,6 +175,7 @@ const handleKeyup = (event) => {
     localStorage.setItem('typeIds', (localStorage.getItem('typeIds') || '-1') + ',' + cur.value.id)
     wordIndex.value++
     window.count.increTypeCount()
+    return
   }
 
   switch (event.key) {

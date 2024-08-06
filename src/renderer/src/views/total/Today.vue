@@ -71,6 +71,12 @@
       </div>
       <div class="nav" style="display: flex">
         <div
+          :class="currentList === 'TodayList' ? 'active' : ''"
+          @click="switchComponent('TodayList')"
+        >
+          Type
+        </div>
+        <div
           :class="currentList === 'TLearnList' ? 'active' : ''"
           @click="switchComponent('TLearnList')"
         >
@@ -81,12 +87,6 @@
           @click="switchComponent('TReviewList')"
         >
           Review
-        </div>
-        <div
-          :class="currentList === 'TodayList' ? 'active' : ''"
-          @click="switchComponent('TodayList')"
-        >
-          Type
         </div>
       </div>
     </div>
@@ -108,7 +108,7 @@ export default {
 
 <script setup>
 import { playStatus, playClick, speech } from '../../util/sound'
-import { cur, wordIndex, chars, charIndex, highlightWords, wordList } from '../../util/wordUtil'
+import { cur, wordIndex, chars, charIndex, highlightWords } from '../../util/wordUtil'
 import { dayTimeInterval, clearTimeInterval } from '../../util/common'
 import { ref, onMounted, onUnmounted } from 'vue'
 
@@ -161,6 +161,7 @@ const handleKeyup = (event) => {
     // Word Complete
     wordIndex.value++
     window.count.increTypeCount()
+    return
   }
 
   switch (event.key) {
@@ -184,6 +185,11 @@ const handleKeyup = (event) => {
       break
   }
 }
+
+// 避免空格下拉
+document.addEventListener('keydown', function (event) {
+  if (event.key === ' ') event.preventDefault()
+})
 
 // update list instead of dymanic component? there are some bug on vue-virtual-scroller when change list,
 function switchComponent(listName) {
