@@ -3,10 +3,13 @@ import Database from 'better-sqlite3';
 const db = new Database('resources/tw.db');
 
 // 增加当前类型计数，如果不存在则保存为1
-export function increTypeCount() {
+export function increTypeCount(id) {
   const today = new Date().setHours(0, 0, 0, 0);
   const sql = `UPDATE count_type SET cnt=cnt+1 WHERE dayTimestamp = ?`
+  const updateSql = `UPDATE word SET lastTimestamp = ? WHERE id = ?`
+
   const transaction = db.transaction(() => {
+    run(db, updateSql, [Date.now(), id])
     const result = run(db, sql, [today])
     if (result.changes === 0) {
       const saveSql = `INSERT INTO count_type (dayTimestamp, cnt) VALUES (?, 1)`

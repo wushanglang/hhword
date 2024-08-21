@@ -1,7 +1,7 @@
 import { ipcMain } from 'electron';
 import { getDictById, listClass, listByClassId, saveDict, removeDictById } from './sqlite/dict'
 import {
-  save, listAll, fetchCount, listLearnByDictId, switchComplete, switchLike, fetchContentByWordId, saveReviewTime, listByIds, listReviewByDictId, increReviewCycle, listByDictId, listLikeByDictId, listAllByDictId, listCompleteByDictId
+  save, listAll, fetchCount, listLearnByDictId, switchComplete, switchLike, fetchContentByWordId, saveReviewTime, listByIds, listToday, listReviewByDictId, increReviewCycle, listByDictId, listLikeByDictId, listAllByDictId, listCompleteByDictId
 } from './sqlite/word'
 import { yearCoutnList, increTypeCount, getTodayCount, getTotalCount } from './sqlite/count'
 
@@ -51,6 +51,9 @@ export function wordEventHandler() {
   ipcMain.handle('listByIds', async (_, data) => {
     return await listByIds(data.params);
   });
+  ipcMain.handle('listToday', async (_) => {
+    return await listToday();
+  });
   ipcMain.handle('listReviewByDictId', async (_, data) => {
     return await listReviewByDictId(data.params);
   });
@@ -73,8 +76,8 @@ export function wordEventHandler() {
 
 // cout api 
 export function countEventHandler() {
-  ipcMain.on('increTypeCount', (_) => {
-    increTypeCount();
+  ipcMain.on('increTypeCount', (_, data) => {
+    increTypeCount(data.params);
   });
 
   ipcMain.handle('getTodayCount', async (_) => {

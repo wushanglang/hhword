@@ -173,8 +173,8 @@ const handleKeyup = (event) => {
   } else if (charIndex.value === chars.value.length) {
     // Word Complete
     localStorage.setItem('typeIds', (localStorage.getItem('typeIds') || '-1') + ',' + cur.value.id)
-    wordIndex.value++
-    window.count.increTypeCount()
+    wordIndex.value++ 
+    window.count.increTypeCount(cur.value.id)
     return
   }
 

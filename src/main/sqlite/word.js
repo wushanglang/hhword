@@ -4,13 +4,19 @@ const db = new Database('resources/tw.db');
 
 // 
 export function listByDictId(params) {
-  const sql = `SELECT w.id, w.word, w.completeTag, w.likeTag FROM dict_map_${params} mp JOIN word w ON w.id = mp.id WHERE w.completeTag = 0`;
+  const sql = `SELECT w.id, w.word, w.completeTag, w.likeTag, wc.content FROM dict_map_${params} mp JOIN word w ON w.id = mp.id LEFT JOIN word_content wc ON wc.id = w.id WHERE w.completeTag = 0`;
   return query(db, sql);
 }
 // 
 export function listByIds(params) {
   const sql = `SELECT w.id, w.word, w.completeTag, w.likeTag, w.reviewCycle, wc.content FROM word w JOIN word_content wc ON w.id = wc.id WHERE w.id IN (${params})  ORDER BY reviewTimestamp ASC`;
   return query(db, sql);
+}
+export function listToday() {
+  const today = new Date().setHours(0, 0, 0, 0)
+  const tomorrow = today + 86400000
+  const sql = 'SELECT w.id, w.word, w.completeTag, w.likeTag, wc.content FROM word w JOIN word_content wc ON w.id = wc.id WHERE ? < w.lastTimestamp AND w.lastTimestamp < ? ORDER BY reviewCycle ASC, lastTimestamp DESC'
+  return query(db, sql, [today, tomorrow]);
 }
 // 
 export function listAllByDictId(params) {

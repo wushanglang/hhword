@@ -9,7 +9,7 @@
       :item-secondary-size="345"
     >
       <template #default="{ item, index }">
-        <div :class="fetchClass(index)" @click="updateWord(index)">
+        <div :class="fetchClass(index)" @click="wordIndex = index">
           {{ item.word }}
         </div>
       </template>
@@ -37,7 +37,7 @@ const initData = async () => {
   wordList.value = chars.value = []
   // 防止status抖动
   cur.value = { likeTag: false, completeTag: false }
-  wordList.value = await window.word.listByDictId(dictId) 
+  wordList.value = await window.word.listByDictId(dictId)
   initIndex(nameIndex)
   updateWord(wordIndex.value)
 }
@@ -51,13 +51,11 @@ function updateWord(index) {
 
   wordIndex.value = index
   cur.value = wordList.value[index]
-  window.word.fetchContentByWordId(cur.value.id).then((data) => {
-    let tmp = JSON.parse(data.content)
-    cur.value.voice = tmp.voice
-    cur.value.tran = tmp.tran
-    cur.value.phrase = tmp.phrase
-    cur.value.sentence = tmp.sentence
-  })
+  let tmp = JSON.parse(cur.value.content)
+  cur.value.voice = tmp.voice
+  cur.value.tran = tmp.tran
+  cur.value.phrase = tmp.phrase
+  cur.value.sentence = tmp.sentence
 
   chars.value = []
   for (let i = 0; i < cur.value.word.length; i++) chars.value.push(cur.value.word[i])
@@ -78,7 +76,7 @@ onMounted(() => {
 })
 
 watch(wordIndex, (newValue) => {
-  updateWord(newValue) 
+  updateWord(newValue)
 })
 </script>
 

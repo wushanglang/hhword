@@ -159,8 +159,8 @@ const handleKeyup = (event) => {
     return
   } else if (charIndex.value === chars.value.length) {
     // Word Complete
-    wordIndex.value++
-    window.count.increTypeCount()
+    wordIndex.value++ 
+    window.count.increTypeCount(cur.value.id)
     return
   }
 

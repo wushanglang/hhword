@@ -10,8 +10,8 @@
     >
       <template #default="{ item, index }">
         <div
-          :class="index === wordIndex ? 'positive item border' : 'item'"
-          @click="updateWord(index)"
+          :class="fetchClass(index)"
+          @click="wordIndex = index"
         >
           {{ item.word }}
         </div>
@@ -32,13 +32,12 @@ import { wordList, cur, wordIndex, chars, charIndex } from '../../util/wordUtil'
 import { scrollToItem, scroller } from '../../util/common'
 import { speech } from '../../util/sound'
 
-let ids = localStorage.getItem('typeIds')
 // set empty then init：wordList, cur, wordIndex, chars
 const initData = async () => {
   wordList.value = chars.value = []
   // 防止status抖动
   cur.value = { likeTag: false, completeTag: false }
-  wordList.value = await window.word.listByIds(ids)
+  wordList.value = await window.word.listToday()
 
   updateWord(0)
 }
@@ -53,19 +52,23 @@ function updateWord(index) {
   wordIndex.value = index
   cur.value = wordList.value[index]
 
-  window.word.fetchContentByWordId(cur.value.id).then((data) => {
-    let tmp = JSON.parse(data.content)
-    cur.value.voice = tmp.voice
-    cur.value.tran = tmp.tran
-    cur.value.phrase = tmp.phrase
-    cur.value.sentence = tmp.sentence
-  })
+  let tmp = JSON.parse(cur.value.content)
+  cur.value.voice = tmp.voice
+  cur.value.tran = tmp.tran
+  cur.value.phrase = tmp.phrase
+  cur.value.sentence = tmp.sentence
 
   chars.value = []
   for (let i = 0; i < cur.value.word.length; i++) chars.value.push(cur.value.word[i])
   charIndex.value = 0
   speech(cur.value.word)
   scrollToItem(wordIndex.value)
+}
+
+function fetchClass(index) {
+  if (index == wordIndex.value) return 'positive item border'
+  if (wordList.value[index].completeTag) return 'item complete'
+  return 'item'
 }
 
 onMounted(() => {

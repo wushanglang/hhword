@@ -1,5 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron'
-import { electronAPI } from '@electron-toolkit/preload'
+import { electronAPI } from '@electron-toolkit/preload' 
 
 // window api
 const api = {
@@ -37,6 +37,8 @@ const word = {
   ,
   listByIds: (params) => ipcRenderer.invoke('listByIds', { params })
   ,
+  listToday: () => ipcRenderer.invoke('listToday')
+  ,
   listReviewByDictId: (params) => ipcRenderer.invoke('listReviewByDictId', { params })
   ,
   increReviewCycle: (id, cycle) => ipcRenderer.invoke('increReviewCycle', { id, cycle })
@@ -53,7 +55,7 @@ const word = {
 }
 
 const count = {
-  increTypeCount: () => ipcRenderer.send('increTypeCount')
+  increTypeCount: (params) => ipcRenderer.send('increTypeCount', { params })
   ,
   getTodayCount: () => ipcRenderer.invoke('getTodayCount')
   ,
