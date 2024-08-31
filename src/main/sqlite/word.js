@@ -12,11 +12,9 @@ export function listByIds(params) {
   const sql = `SELECT w.id, w.word, w.completeTag, w.likeTag, w.reviewCycle, wc.content FROM word w JOIN word_content wc ON w.id = wc.id WHERE w.id IN (${params})  ORDER BY reviewTimestamp ASC`;
   return query(db, sql);
 }
-export function listToday() {
-  const today = new Date().setHours(0, 0, 0, 0)
-  const tomorrow = today + 86400000
-  const sql = 'SELECT w.id, w.word, w.completeTag, w.likeTag, wc.content FROM word w JOIN word_content wc ON w.id = wc.id WHERE ? < w.lastTimestamp AND w.lastTimestamp < ? ORDER BY reviewCycle ASC, lastTimestamp DESC'
-  return query(db, sql, [today, tomorrow]);
+export function listToday(params) {
+  const sql = 'SELECT w.id, w.word, w.completeTag, w.likeTag, wc.content FROM word w JOIN word_content wc ON w.id = wc.id WHERE ? < w.lastTimestamp AND w.lastTimestamp < ? ORDER BY lastTimestamp DESC'
+  return query(db, sql, [params, params + 86400000]);
 }
 // 
 export function listAllByDictId(params) {

@@ -4,14 +4,14 @@
       ref="scroller"
       class="scroller"
       :items="wordList"
-      :item-size="65"
+      :item-size="54"
       :grid-items="2"
-      :item-secondary-size="355"
+      :item-secondary-size="350"
     >
       <template #default="{ item, index }">
-        <div onclick="dialog.showModal()" :class="fetchClass(index)" @click="playClick(index)">
+        <article onclick="dialog.showModal()" :class="fetchClass(index)" @click="playClick(index)">
           {{ item.word }}
-        </div>
+        </article>
       </template>
     </RecycleScroller>
 

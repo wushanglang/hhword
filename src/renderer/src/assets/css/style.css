@@ -105,14 +105,12 @@ button {
   max-width: 345px;
   cursor: pointer;
   text-align: center;
-  padding: 5px 0;
+  padding: 9px 0;
   transition: 200ms;
 }
 
 .item:hover {
-  box-shadow: 0 0 0 1px inset;
-  border-radius: 2px;
-  color: var(--pico-primary-hover-background);
+  color: var(--pico-primary-background);
 }
 
 .complete {
@@ -121,8 +119,7 @@ button {
 }
 
 .border {
-  box-shadow: 0 0 0 1px inset;
-  border-radius: 2px;
+  box-shadow: 0 0 0 1px inset var(--pico-primary-background); 
 }
 
 /* system scroller */

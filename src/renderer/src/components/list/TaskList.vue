@@ -3,15 +3,15 @@
     <RecycleScroller
       ref="scroller"
       class="scroller"
-      :items="wordList"
-      :item-size="66"
+      :items="list"
+      :item-size="54"
       :grid-items="2"
       :item-secondary-size="345"
     >
       <template #default="{ item, index }">
-        <div :class="fetchClass(index)" @click="wordIndex = index">
+        <article :class="fetchClass(index)" @click="wordIndex = index">
           {{ item.word }}
-        </div>
+        </article>
       </template>
     </RecycleScroller>
   </div>
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <script setup>
-import { onMounted, watch } from 'vue'
+import { onMounted, watch, computed } from 'vue'
 import { wordList, cur, wordIndex, initIndex, chars, charIndex } from '../../util/wordUtil'
 import { scrollToItem, scroller } from '../../util/common'
 import { speech } from '../../util/sound'
@@ -70,6 +70,9 @@ function fetchClass(index) {
   return 'item'
 }
 
+let list = computed(() => {
+  return [...wordList.value]
+})
 onMounted(() => {
   initData()
   setTimeout(() => scrollToItem(wordIndex.value), 50)

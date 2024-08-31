@@ -4,17 +4,17 @@
       ref="scroller"
       class="scroller"
       :items="wordList"
-      :item-size="66"
+      :item-size="54"
       :grid-items="2"
       :item-secondary-size="345"
     >
       <template #default="{ item, index }">
-        <div
+        <article
           :class="index === wordIndex ? 'positive item border' : 'item'"
           @click="updateWord(index)"
         >
           {{ item.word }}
-        </div>
+        </article>
       </template>
     </RecycleScroller>
   </div>

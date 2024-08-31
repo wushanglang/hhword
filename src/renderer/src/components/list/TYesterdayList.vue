@@ -11,7 +11,7 @@
       <template #default="{ item, index }">
         <article
           :class="index === wordIndex ? 'positive item border' : 'item'"
-          @click="updateWord(index)"
+          @click="wordIndex = index"
         >
           {{ item.word }}
         </article>
@@ -22,27 +22,23 @@
 
 <script>
 export default {
-  name: 'TotalList'
+  name: 'TYesterdayList'
 }
 </script>
 
 <script setup>
 import { onMounted, watch } from 'vue'
-import { wordList, cur, wordIndex, initIndex, chars, charIndex } from '../../util/wordUtil'
+import { wordList, cur, wordIndex, chars, charIndex } from '../../util/wordUtil'
 import { scrollToItem, scroller } from '../../util/common'
 import { speech } from '../../util/sound'
 
-const dictId = localStorage.getItem('dictId')
-
 // set empty then init：wordList, cur, wordIndex, chars
-let nameIndex = 'TotalList'
 const initData = async () => {
   wordList.value = chars.value = []
   // 防止status抖动
   cur.value = { likeTag: false, completeTag: false }
-  wordList.value = await window.word.listAllByDictId(dictId)
-  initIndex(nameIndex)
-  updateWord(wordIndex.value)
+  wordList.value = await window.word.listToday(new Date().setHours(0, 0, 0, 0) - 86400000)
+  updateWord(0)
 }
 
 // 1、updateWord：边界维护，更新cur，cur.content, wordIndex，chars, charIndex
@@ -55,13 +51,11 @@ function updateWord(index) {
   wordIndex.value = index
   cur.value = wordList.value[index]
 
-  window.word.fetchContentByWordId(cur.value.id).then((data) => {
-    let tmp = JSON.parse(data.content)
-    cur.value.voice = tmp.voice
-    cur.value.tran = tmp.tran
-    cur.value.phrase = tmp.phrase
-    cur.value.sentence = tmp.sentence
-  })
+  let tmp = JSON.parse(cur.value.content)
+  cur.value.voice = tmp.voice
+  cur.value.tran = tmp.tran
+  cur.value.phrase = tmp.phrase
+  cur.value.sentence = tmp.sentence
 
   chars.value = []
   for (let i = 0; i < cur.value.word.length; i++) chars.value.push(cur.value.word[i])

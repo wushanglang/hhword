@@ -51,8 +51,8 @@ export function wordEventHandler() {
   ipcMain.handle('listByIds', async (_, data) => {
     return await listByIds(data.params);
   });
-  ipcMain.handle('listToday', async (_) => {
-    return await listToday();
+  ipcMain.handle('listToday', async (_, data) => {
+    return await listToday(data.params);
   });
   ipcMain.handle('listReviewByDictId', async (_, data) => {
     return await listReviewByDictId(data.params);

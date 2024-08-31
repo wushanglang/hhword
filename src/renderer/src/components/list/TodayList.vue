@@ -4,17 +4,17 @@
       ref="scroller"
       class="scroller"
       :items="wordList"
-      :item-size="66"
+      :item-size="54"
       :grid-items="2"
       :item-secondary-size="345"
     >
       <template #default="{ item, index }">
-        <div
-          :class="fetchClass(index)"
+        <article
+          :class="index === wordIndex ? 'positive item border' : 'item'"
           @click="wordIndex = index"
         >
           {{ item.word }}
-        </div>
+        </article>
       </template>
     </RecycleScroller>
   </div>
@@ -37,7 +37,7 @@ const initData = async () => {
   wordList.value = chars.value = []
   // 防止status抖动
   cur.value = { likeTag: false, completeTag: false }
-  wordList.value = await window.word.listToday()
+  wordList.value = await window.word.listToday(new Date().setHours(0, 0, 0, 0))
 
   updateWord(0)
 }

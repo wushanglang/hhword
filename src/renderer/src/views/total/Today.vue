@@ -74,7 +74,13 @@
           :class="currentList === 'TodayList' ? 'active' : ''"
           @click="switchComponent('TodayList')"
         >
-          Type
+          Today
+        </div>
+        <div
+          :class="currentList === 'TYesterdayList' ? 'active' : ''"
+          @click="switchComponent('TYesterdayList')"
+        >
+          Yesterday
         </div>
         <div
           :class="currentList === 'TLearnList' ? 'active' : ''"
@@ -97,11 +103,13 @@
 import TLearnList from '../../components/list/TLearnList.vue'
 import TReviewList from '../../components/list/TReviewList.vue'
 import TodayList from '../../components/list/TodayList.vue'
+import TYesterdayList from '../../components/list/TYesterdayList.vue'
 export default {
   components: {
     TodayList,
     TReviewList,
-    TLearnList
+    TLearnList,
+    TYesterdayList
   }
 }
 </script>
@@ -159,7 +167,7 @@ const handleKeyup = (event) => {
     return
   } else if (charIndex.value === chars.value.length) {
     // Word Complete
-    wordIndex.value++ 
+    wordIndex.value++
     window.count.increTypeCount(cur.value.id)
     return
   }
@@ -191,7 +199,7 @@ document.addEventListener('keydown', function (event) {
   if (event.key === ' ') event.preventDefault()
 })
 
-// update list instead of dymanic component? there are some bug on vue-virtual-scroller when change list,
+// bug of virtual-scroll when update list instead of dymanic component
 function switchComponent(listName) {
   if (listName === currentList.value) return
   currentList.value = listName
